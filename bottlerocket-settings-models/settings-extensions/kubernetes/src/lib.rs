@@ -83,6 +83,8 @@ pub struct KubernetesSettingsV1 {
     memory_manager_reserved_memory: HashMap<Identifier, KubernetesMemoryReservation>,
     memory_manager_policy: KubernetesMemoryManagerPolicy,
     reserved_cpus: KernelCpuSetValue,
+    serialize_image_pulls: bool,
+    max_parallel_image_pulls: i32,
 
     // Settings where we generate a value based on the runtime environment.  The user can specify a
     // value to override the generated one, but typically would not.
