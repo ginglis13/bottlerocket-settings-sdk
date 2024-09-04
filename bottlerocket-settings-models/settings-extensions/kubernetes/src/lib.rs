@@ -98,6 +98,9 @@ pub struct KubernetesSettingsV1 {
     seccomp_default: bool,
     #[cfg(feature = "nvidia-device-plugin")]
     device_plugins: K8sDevicePluginsSettings,
+    // Generated in `k8s-1.27+` variants only
+    serialize_image_pulls: bool,
+    max_parallel_image_pulls: i32,
 }
 
 type Result<T> = std::result::Result<T, Infallible>;
@@ -197,6 +200,8 @@ mod test {
                 seccomp_default: None,
                 #[cfg(feature = "nvidia-device-plugin")]
                 device_plugins: None,
+                serialize_image_pulls: None,
+                max_parallel_image_pulls: None,
             })
         );
     }
