@@ -19,6 +19,7 @@ pub struct ContainerRuntimeSettingsV1 {
     concurrent_download_chunk_size: i64,
     enable_unprivileged_ports: bool,
     enable_unprivileged_icmp: bool,
+    image_pull_with_sync_fs: bool,
     snapshotter: Snapshotter,
 }
 
@@ -76,6 +77,7 @@ mod test {
                 concurrent_download_chunk_size: None,
                 enable_unprivileged_ports: None,
                 enable_unprivileged_icmp: None,
+                image_pull_with_sync_fs: None,
                 snapshotter: None,
             }))
         )
@@ -90,6 +92,7 @@ mod test {
             "concurrent-download-chunk-size": "64mb",
             "enable-unprivileged-ports": true,
             "enable-unprivileged-icmp": false,
+            "image-pull-with-sync-fs": true,
             "snapshotter": "soci",
         });
 
@@ -107,6 +110,7 @@ mod test {
                 concurrent_download_chunk_size: Some(64000000), // 64mb in bytes
                 enable_unprivileged_ports: Some(true),
                 enable_unprivileged_icmp: Some(false),
+                image_pull_with_sync_fs: Some(true),
                 snapshotter: Some(Snapshotter::Soci),
             }
         );
@@ -122,6 +126,7 @@ mod test {
             "concurrent-download-chunk-size": 64000000, // Serialized as number
             "enable-unprivileged-ports": true,
             "enable-unprivileged-icmp": false,
+            "image-pull-with-sync-fs": true,
             "snapshotter": "soci",
         });
 
@@ -152,6 +157,7 @@ mod test {
                 concurrent_download_chunk_size: Some(128000000), // 128mb in bytes
                 enable_unprivileged_ports: Some(false),
                 enable_unprivileged_icmp: Some(true),
+                image_pull_with_sync_fs: None,
                 snapshotter: Some(Snapshotter::Overlayfs),
             }
         );
